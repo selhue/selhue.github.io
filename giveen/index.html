@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>GiveEN</title><link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0%' y1='0%' x2='100%' y2='100%'%3E%3Cstop offset='0%' stop-color='%23603f72'/%3E%3Cstop offset='100%' stop-color='%23b879d3'/%3E%3C/linearGradient%3E%3C/defs%3E%3Ccircle cx='32' cy='32' r='30' fill='url(%23g)'/%3E%3Ctext x='50%' y='55%' font-size='32' text-anchor='middle' fill='white' font-family='Arial' dy='.3em'%3E★%3C/text%3E%3C/svg%3E">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3CradialGradient id='g1' cx='50%' cy='0%' r='100%'%3E%3Cstop offset='0%' stop-color='rgba(77,27,137,0.6)'/%3E%3Cstop offset='60%' stop-color='rgba(0,0,0,1)'/%3E%3C/radialGradient%3E%3CradialGradient id='g2' cx='20%' cy='70%' r='60%25'%3E%3Cstop offset='0%' stop-color='rgba(19,18,19,0.3)'/%3E%3Cstop offset='60%' stop-color='transparent'/%3E%3C/radialGradient%3E%3C/defs%3E%3Crect width='64' height='64' fill='url(%23g1)'/%3E%3Crect width='64' height='64' fill='url(%23g2)'/%3E%3Ctext x='50%' y='58%' font-size='52' text-anchor='middle' fill='white' font-family='Arial' dy='.3em'%3E★%3C/text%3E%3C/svg%3E">
+<meta name="description" content="GIVE EN is a creative digital agency offering brand bundles, UX design, websites, and production-ready software. Get demos, prototypes, and scalable systems now.">
+<meta name="keywords" content="GIVE EN, UX design, brand design, freelance agency, software demo, prototype, web development, production software, startup design agency, creative agency Philippines">
+<meta name="author" content="GIVE EN">
+<meta name="robots" content="index, follow">
+<meta name="googlebot" content="index, follow">
+<meta name="referrer" content="no-referrer-when-downgrade">
+<link rel="icon" href="https://selhue.com/giveen/favicon.ico">
+<link rel="canonical" href="https://selhue.com/giveen">
+
+<meta property="og:title" content="GIVE EN — Brand & Web Software Agency">
+<meta property="og:description" content="We provide demo builds, prototypes, and production-ready software with full branding and UX/UI design. Awarded by Canva, CodeElite, and more.">
+<meta property="og:image" content="https://selhue.com/giveen/og-image.jpg"> <!-- Replace with your image -->
+<meta property="og:url" content="https://selhue.com/giveen">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="GIVE EN">
+<meta property="og:locale" content="en_PH">
+
+<script type="application/ld+json">
+{
+"@context": "https://schema.org",
+"@type": "Organization",
+"name": "GIVE EN",
+"url": "https://selhue.com/giveen",
+"logo": "https://selhue.com/giveen/logo.png",
+"description": "GIVE EN is a digital agency that provides brand-focused design and software development. We build demos, prototypes, and production-ready web systems for startups and businesses."
+}
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">              
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;700;900&display=swap" rel="stylesheet">
+<style>
+html, body {
+margin: 0;
+padding: 0;
+background: black;
+color: white;
+font-family: 'Unbounded', sans-serif;
+overflow-x: hidden;
+}
+
+body {
+max-width: 1099px;
+margin: auto auto;
+}
+
+[hero] {
+background-color: rgb(77, 27, 137);
+background-image: 
+
+radial-gradient(circle at top, rgba(77, 27, 137, 0.6),
+rgba(0, 0, 0, 1) 60%),radial-gradient(circle at 20% 70%, rgba(19, 18, 19, 0.3), 
+transparent 60%);
+
+text-align: center;
+justify-content: center;
+place-content: center;
+padding: 6rem 1rem;
+height: 70svh;
+}
+
+[hero] h1 {
+font-size: 4rem;
+margin: 0;
+}
+
+[hero] h2 {
+font-size: 1rem;
+letter-spacing: 0.2em;
+color: #aaa;
+margin-top: 1rem;
+}
+
+[supported] {
+text-align: center;
+padding: 3rem 1rem;
+}
+
+[supported] h3 {
+font-size: 1.2rem;
+margin-bottom: 2rem;
+}
+
+[scroller] {
+overflow: hidden;
+white-space: nowrap;
+width: 100%;
+}
+
+[scroll-content] {
+display: inline-block;
+min-width: 100%;
+}
+
+[scroll-track] {
+display: inline-flex;
+animation: scroll-track 40s linear infinite;
+}
+
+[scroll-track] span {
+margin-right: 3rem;
+font-size: 1.2rem;
+opacity: 0.7;
+white-space: nowrap;
+}
+
+@keyframes scroll-track {
+from {
+transform: translateX(0%);
+}
+to {
+transform: translateX(-50%);
+}
+}
+
+
+[info-card] {
+display: flex;
+flex-direction: row;
+flex-wrap: wrap;
+gap: 2rem;
+padding: 4rem 2rem;
+justify-content: center;
+align-items: center;
+height: 70svh;
+}
+
+[info-content] {
+flex: 1 1 300px;
+min-width: 260px;
+}
+
+@media screen and (max-width: 768px) {
+[info-card] {
+flex-direction: column;
+text-align: center;
+}
+
+[info-content] {
+width: 100%;
+flex: unset; 
+}
+
+[info-content] {
+padding: 0 1rem;
+}
+}
+
+[pricing] {
+padding: 4rem 2rem;
+display: flex;
+flex-wrap: wrap;
+justify-content: center;
+gap: 2rem;
+}
+
+[price-card] {
+perspective: 800px;
+min-width: 250px;
+flex: 1 1 250px;
+max-width: 300px;
+
+transition: ease-in-out 0.2s;
+}
+
+[price-card] h4 {
+margin: 0 0 1rem;
+font-size: 1.5rem;
+}
+
+[price-card] p {
+color: #aaa;
+line-height: 1.4;
+}
+
+[price-card] strong {
+color: #792fd4;
+font-size: 1.8rem;
+}
+[price-card] {
+position: relative;
+transform-style: preserve-3d;
+transition: transform 0.2s ease, filter 0.2s ease;
+will-change: transform;
+perspective: 1000px;
+}
+
+[inner-card] {
+background: rgba(255, 255, 255, 0.046);
+border: #2f2d30 1px solid;
+padding: 2rem;
+backdrop-filter: blur(10px);
+border-radius: 1rem;
+position: relative;
+transform-style: preserve-3d;
+transition: transform 0.2s ease, filter 0.2s ease;
+
+box-shadow: 0 0 25px 12px #6b647525;
+}
+
+[inner-card-backface] {
+position: absolute;
+inset: 0;
+transform: translateZ(-4px);
+pointer-events: none;
+z-index: 0;
+}
+
+[glare] {
+position: absolute;
+inset: 0;
+pointer-events: none;
+border-radius: inherit;
+z-index: 10;
+}
+
+
+footer {
+padding: 1.5em;
+text-align: center;
+}
+conta {
+place-content: center;
+display: flex;
+
+}
+
+conta a {
+background: rgba(69, 31, 95, 0.457);
+border: #57286e 1px solid;
+padding: 2rem;
+backdrop-filter: blur(10px);
+border-radius: 1rem;
+transition: all 0.5s;
+box-shadow: 0 0 45px 5px #6a3b8291;
+text-decoration: none;
+color: white;
+}
+
+conta a:hover {
+background: rgba(132, 63, 179, 0.457);
+border: #4e156a 1.75px solid;
+padding: 2.3rem;
+backdrop-filter: blur(10px);
+border-radius: 2.4rem;
+transition: all 0.5s; 
+font-size: 18px;
+box-shadow: 0 0 75px 12px #9057ad91;
+
+scale: 1.2;
+}
+</style>
+<style>
+
+@font-face { font-family: 'hcr'; src: url('https://actwu.github.io/hcr.woff2') format('woff2'), url('https://actwu.github.io/hcr.woff') format('woff'); font-weight: normal; font-style: normal; } [hcr] { font-family: 'hcr', sans-serif; }
+</style>
+</head>
+<body>
+
+<section hero>
+<h1 hcr>GiveEN</h1>
+
+<h2> GIVE EXPERIENCE NOW</h2>
+</section>
+
+<conta>
+<a href="https://www.facebook.com/selhuecom/">
+<say>Work with us</say>
+</a>
+</conta>
+
+<section info-card>
+
+<div info-content>
+<h3 hcr>About GiveEN</h3>
+<p>
+GiveEN is not just a brand, it's a team. We actively hire and train freelancers, giving opportunities to creatives and developers who deserve it. Our mission is to grow together, not alone.
+</p>
+<p>
+We offer real mentorship, real projects, and a supportive system for everyone we bring in.
+</p>
+</div>
+</section>
+
+<section pricing>
+<card price-card>
+<div inner-card>
+<div inner-card-backface></div>
+<div glare></div>
+<h4>Demo</h4>
+<strong>₱600</strong>
+<p>Light interactive preview (UX + minimal logic)</p>
+</div>
+</card>
+
+<card price-card>
+<div inner-card>
+<div inner-card-backface></div>
+<div glare></div>
+<h4>Prototype</h4>
+<strong>₱1,199</strong>
+<p>High-fidelity, clickable prototype with user flow</p>
+</div>
+</card>
+
+<card price-card>
+<div inner-card>
+<div inner-card-backface></div>
+<div glare></div>
+<h4>Production</h4>
+<strong>₱10,599</strong>
+<p>Full, production-ready software or website</p>
+</div>
+</card>
+</section>
+
+<scroll scroller>
+<stoaa scroll-content>
+<btrack scroll-track>
+<span>Canva</span>
+<span>Weffle</span>
+<span>Ronald.GG</span>
+<span>SignRed</span>
+<span>Red Seven</span>
+<span>BuiltX</span>
+<span>Siwaga</span>
+<span>Aid-Lift</span>
+<span>Plasti Points</span>
+<span>BIO IT</span>
+<span>FluxUse</span>
+<span>Aftay</span>
+<span>HandBy</span>
+
+<span>Canva</span>
+<span>Weffle</span>
+<span>Ronald.GG</span>
+<span>SignRed</span>
+<span>Red Seven</span>
+<span>BuiltX</span>
+<span>Siwaga</span>
+<span>Aid-Lift</span>
+<span>Plasti Points</span>
+<span>BIO IT</span>
+<span>FluxUse</span>
+<span>Aftay</span>  
+<span>HandBy</span>
+</btrack>
+</stoaa>
+</scroll>
+
+
+
+<footer footer>
+&copy; 2025 GiveEN. <br> Under Selhue <br> Built by Nai in the Philippines · All rights reserved.
+</footer>
+<script>
+let calculateAngle = function(e, item, parent) {
+let dropShadowColor = `rgba(0, 0, 0, 0.3)`
+if(parent.getAttribute('data-filter-color') !== null) {
+dropShadowColor = parent.getAttribute('data-filter-color');
+}
+
+let rect = item.getBoundingClientRect();
+let x = e.clientX - rect.left;
+let y = e.clientY - rect.top;
+
+let halfWidth  = rect.width / 2;
+let halfHeight = rect.height / 2;
+
+let calcAngleX = (x - halfWidth) / 6;
+let calcAngleY = (y - halfHeight) / 14;
+
+let gX = (1 - (x / (halfWidth * 2))) * 100;
+let gY = (1 - (y / (halfHeight * 2))) * 100;
+
+item.querySelector('[glare]').style.background = 
+`radial-gradient(circle at ${gX}% ${gY}%, rgba(199, 198, 243, 0.1), transparent)`;
+
+parent.style.perspective = `${halfWidth * 6}px`;
+item.style.perspective = `${halfWidth * 6}px`;
+
+item.style.transform = `rotateY(${calcAngleX}deg) rotateX(${-calcAngleY}deg) scale(1.04)`;
+item.querySelector('[inner-card-backface]').style.transform = 
+`rotateY(${calcAngleX}deg) rotateX(${-calcAngleY}deg) scale(1.04) translateZ(-4px)`;
+
+let calcShadowX = (x - halfWidth) / 3;
+let calcShadowY = (y - halfHeight) / 6;
+item.style.filter = `drop-shadow(${-calcShadowX}px ${-calcShadowY}px 15px ${dropShadowColor})`;
+};
+
+document.querySelectorAll('card[price-card]').forEach(function(card) {
+const inner = card.querySelector('[inner-card]');
+card.addEventListener('mousemove', function(e) {
+calculateAngle(e, inner, card);
+});
+
+card.addEventListener('mouseenter', function(e) {
+calculateAngle(e, inner, card);
+});
+
+card.addEventListener('mouseleave', function() {
+inner.style.transform = `rotateY(0deg) rotateX(0deg) scale(1)`;
+inner.querySelector('[inner-card-backface]').style.transform = 
+`rotateY(0deg) rotateX(0deg) scale(1) translateZ(-4px)`;
+inner.style.filter = `drop-shadow(0 10px 15px rgba(0,0,0,0.1))`;
+});
+});
+</script>
+
+</body>
+</html>
