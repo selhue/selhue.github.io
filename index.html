@@ -481,6 +481,14 @@
     document.getElementById('shareBtn').onclick = () => {
         const p = document.getElementById('sharePopup');
         p.classList.add('show');
+      
+    const copyText = "https://selhue.com";
+    navigator.clipboard.writeText(copyText).then(() => {
+        alert("Link copied!");
+    }).catch(err => {
+        console.error("Failed to copy: ", err);
+    });
+      
         setTimeout(() => p.classList.remove('show'), 2000);
     };
 
