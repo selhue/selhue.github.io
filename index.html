@@ -353,7 +353,7 @@
     <div id="commentList" style="overflow-y:auto; height: 80%; padding: 0 25px;"></div>
 </div>
 
-<div class="vibe-anchor" id="musicToggle"><div class="vinyl" id="vinyl"><i class="fa-solid fa-bolt" style="font-size:12px;"></i></div></div>
+<div class="vibe-anchor" id="musicToggle"><div class="vinyl" id="vinyl"><i class="fa-solid fa-compact-disc" style="font-size:12px;"></i></div></div>
 <audio id="bgMusic" loop src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3"></audio>
 
 <main id="main" onscroll="handleAutoPlay()"></main>
@@ -425,7 +425,8 @@
     function handleAutoPlay() {
         if(!hasPlayed) {
             const audio = document.getElementById('bgMusic');
-            audio.play().catch(() => { audio.volume = 0.3;}); 
+          audio.volume = 0.3;
+            audio.play().catch(() => { }); 
             document.getElementById('vinyl').classList.add('playing');
             hasPlayed = true;
         }
