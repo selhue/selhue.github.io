@@ -976,12 +976,20 @@
         else likeBtn.classList.remove('liked');
 
         // Prepare comments
-        document.getElementById('commentList').innerHTML = data.comments.map(c => `
-            <div style="margin-bottom:20px; border-bottom: 1px solid #222; padding-bottom: 10px;">
-                <span style="font-size:10px; color:rgba(255,255,255,0.4);">@${'•'.repeat(Math.floor(Math.random() * 12) + 1)}</span><br>
-                <span style="text-transform:none; font-size:14px;">${c}</span>
-            </div>
-        `).join('');
+        document.getElementById('commentList').innerHTML = data.comments.map(c => {
+    const len = Math.floor(Math.random() * 12) + 4; // 5-16 characters
+    const chars = ['•', '.', '-', '_'];
+    // Build string except last char
+    let str = Array.from({length: len - 1}, () => chars[Math.floor(Math.random() * chars.length)]).join('');
+    str += '•'; // always end with •
+    
+    return `
+        <div style="margin-bottom:20px; border-bottom: 1px solid #222; padding-bottom: 10px;">
+            <span style="font-size:10px; color:rgba(255,255,255,0.4);">@${str}</span><br>
+            <span style="text-transform:none; font-size:14px;">${c}</span>
+        </div>
+    `;
+}).join('');
     }
 
     const obs = new IntersectionObserver((es) => {
