@@ -930,7 +930,7 @@
         const section = document.createElement('section');
         section.dataset.index = i;
         const layoutClass = (Math.floor(i / 2) % 2 === 0) ? 'layout-normal' : 'layout-reverse';
-        section.dataset.color = brandColors[i % brandColors.length];
+        section.dataset.color = brandColors[i % brandColors.length + Math.floor(Math.random() * brandColors.length)];
 
         section.innerHTML = `
             <div class="reel-card ${layoutClass}">
@@ -948,6 +948,24 @@
         track.innerHTML = '<div class="progress-fill"></div>';
         document.getElementById('progressBars').appendChild(track);
     });
+
+    window.addEventListener('scroll', () => {
+    const sections = document.querySelectorAll('section');
+
+    sections.forEach(section => {
+         const rect = section.getBoundingClientRect();
+        if (rect.top < window.innerHeight && rect.bottom > 0) {
+           
+      section.dataset.color = 
+      brandColors[i %
+       Math.floor(Math.random() * brandColors.length *
+       Math.floor(Math.random() * brandColors.length *2)
+
+    )];
+
+        }
+    });
+});
 
     const fills = document.querySelectorAll('.progress-fill');
     let currentIndex = 0;
