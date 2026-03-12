@@ -273,7 +273,7 @@ filter: drop-shadow(0 20px 30px rgba(0,0,0,0.3));
 /* --- SIDEBAR & PILL BUTTONS --- */
 .interaction-bar {
 position: fixed; right: 12px; bottom: 120px; 
-display: flex; flex-direction: column; gap: 20px; z-index: 2500; align-items: center;
+display: flex; flex-direction: column; gap: 20px; z-index: 2; align-items: center;
 }
 .p-avatar { 
 width: 50px; height: 50px; background: #fff; border-radius: 50%; 
@@ -298,11 +298,50 @@ cursor: pointer;
 
 /* --- OVERLAYS --- */
 #profileOverlay, #commentOverlay {
-position: fixed; inset: 0; background: #000; z-index: 5000;
+position: fixed; inset: 0; background: #000; z-index: 20;
 transform: translateX(100%); transition: transform 0.4s var(--ease);
 padding: 40px 25px;
 }
+#commentOverlay {
+  overflow-y: auto;
+
+  /* Firefox */
+  scrollbar-width: thin;
+  scrollbar-color: #444 #111;
+}
+
+/* Chrome / Edge / Safari */
+#commentOverlay::-webkit-scrollbar {
+  width: 5px;
+}
+
+#commentOverlay::-webkit-scrollbar-track {
+  background: #212022;
+}
+
+#commentOverlay::-webkit-scrollbar-thumb {
+  background: #2c2a33;
+  border-radius: 6px;
+}
+
+#commentOverlay::-webkit-scrollbar-thumb:hover {
+  background: #35313a;
+}
 #commentOverlay { top: auto; height: 70vh; transform: translateY(100%); border-radius: 40px 40px 0 0; background: #0a0a0a; border-top: 1px solid #333;}
+@media (min-width: 540px) {
+  #commentOverlay  {
+    max-width: 540px;
+    right: 80px;
+    min-width: 400px;
+z-index: 20;
+    top: unset;
+    
+    left: unset;
+    bottom:0px;
+    position: fixed;
+  
+  }
+}
 .open { transform: translate(0) !important; }
 
 #sharePopup {
