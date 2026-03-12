@@ -393,7 +393,7 @@ p { font-size: 0.9rem; font-weight: 900; text-transform: none; max-width: 320px;
 </div>
 
 <div class="vibe-anchor" id="musicToggle"><div class="vinyl" id="vinyl"><i class="fa-solid fa-compact-disc" style="font-size:12px;"></i></div></div>
-<audio id="bgMusic" loop src="https://selhue.com/asset/bg.mp3"></audio>
+<audio id="bgMusic" loop src="http://selhue.com/asset/bg.mp3"></audio>
 
 <main id="main" onscroll="handleAutoPlay()">
 <section>
@@ -649,19 +649,27 @@ window.addEventListener('resize', placeRandomly);
 </section>
 </main>
 
-<script>const brandColors = [
-"#0D0D0D",
-"#141414",
-"#A31D36",
-"#2C4F85",
-"#1B3B36",
-"#3A3A3A",
-"#4A2C40",
-"#5C3D2E",
-"#323D28",
-"#252A30"
-];
+<script>
+  const brandColors = [
+  "#0B0B0B", // black
+  "#12121B", // deep indigo
+  "#20203C", // dim navy
+  "#2C4466", // muted blue
+  "#324C7A", // desaturated blue
+  "#3A578F", // soft indigo
+  "#3F619F", // muted periwinkle
+  "#445FAE", // dim lavender-blue
 
+  "#506FC4", // soft violet-blue
+  "#3B4950", // dim teal-gray
+  "#32404A", // muted slate blue
+  "#2B3640", // charcoal blue
+  "#26303A", // dark steel
+  "#1F2930", // cool gray
+  "#1A2128", // blue-gray black
+  "#141B22", // deep ocean blue
+  "#0F151A"  // almost black-blue
+];
 const stepsData = [
 { "h3": "MABUHAY", "h2": "LOCAL FIRST", "p": "We build for the Philippines. Marketing that actually speaks the language.", "icon": "fa-solid fa-location-dot", "likes": 1204, "comments": ["Legittt local strategy.", "Tama, start local muna","Eto needs nang PH."] },
 { "h3": "STRATEGY", "h2": "SELHUE", "p": "Acquisition frameworks designed for local conversion and global standards.", "icon": "fa-solid fa-chess-knight", "likes": 856, "comments": ["The logic is solid.", "Omshimm"] },
@@ -1220,47 +1228,75 @@ const stepsData = [
 ].map(s => ({ ...s, isLiked: false }));
 
 const main = document.getElementById('main');
+
+const getRandomLayout = () => ['layout-normal', 'layout-reverse'][Math.floor(Math.random() * 2)];
+
+const recentColors = [];
+
+const getRandomColor = () => {
+  let color;
+  let attempts = 0;
+  do {
+    color = brandColors[Math.floor(Math.random() * brandColors.length)];
+    attempts++;
+    // fallback to avoid infinite loop if brandColors is small
+    if (attempts > 20) break;
+  } while (recentColors.includes(color));
+  
+  // add to recent history
+  recentColors.push(color);
+  if (recentColors.length > 3) recentColors.shift();
+  
+  return color;
+};
+
 stepsData.forEach((step, i) => {
-const section = document.createElement('section');
-section.dataset.index = i;
-const layoutClass = (Math.floor(i / 2) % 2 === 0) ? 'layout-normal' : 'layout-reverse';
-section.dataset.color = brandColors[i % brandColors.length + Math.floor(Math.random() * brandColors.length)];
+  const section = document.createElement('section');
+  section.setAttribute('data-index', i);
+  section.setAttribute('data-color', getRandomColor());
 
-section.innerHTML = `
-<div class="reel-card ${layoutClass}">
-<div class="visual-side"><i class="${step.icon} floating-icon"></i></div>
-<div class="content-side">
-<h3>${step.h3}</h3>
-<h2>${step.h2}</h2>
-<p>${step.p}</p>
-</div>
-</div>`;
-main.appendChild(section);
+  const layout = getRandomLayout();
 
-const track = document.createElement('div');
-track.className = 'progress-track';
-track.innerHTML = '<div class="progress-fill"></div>';
-document.getElementById('progressBars').appendChild(track);
+  section.innerHTML = `
+    <div class="reel-card ${layout}">
+      <div class="visual-side"><i class="${step.icon} floating-icon"></i></div>
+      <div class="content-side">
+        <h3>${step.h3}</h3>
+        <h2>${step.h2}</h2>
+        <p>${step.p}</p>
+      </div>
+    </div>
+  `;
+
+  main.appendChild(section);
+
+  const track = document.createElement('div');
+  track.className = 'progress-track';
+  track.innerHTML = '<div class="progress-fill"></div>';
+  document.getElementById('progressBars').appendChild(track);
+
+  const observer = new IntersectionObserver(
+    entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          // true non-repeating color
+          section.setAttribute('data-color', getRandomColor());
+          // random layout
+          const card = section.querySelector('.reel-card');
+          card.classList.remove('layout-normal', 'layout-reverse');
+          card.classList.add(getRandomLayout());
+        }
+      });
+    },
+    {
+      root: null,
+      rootMargin: '0px',
+      threshold: [0.25, 0.75]
+    }
+  );
+
+  observer.observe(section);
 });
-
-window.addEventListener('scroll', () => {
-const sections = document.querySelectorAll('app>section');
-
-sections.forEach(section => {
-const rect = section.getBoundingClientRect();
-if (rect.top < window.innerHeight && rect.bottom > 0) {
-
-section.dataset.color = 
-brandColors[i %
-Math.floor(Math.random() * brandColors.length *
-Math.floor(Math.random() * brandColors.length *2)
-
-)];
-
-}
-});
-});
-
 const fills = document.querySelectorAll('.progress-fill');
 let currentIndex = 0;
 let hasPlayed = false;
