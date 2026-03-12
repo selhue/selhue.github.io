@@ -200,6 +200,7 @@ position: fixed;
 transition: background-color 0.8s var(--ease);
 }
 
+
 .progress-container {
   position: fixed;
   top: 15px;
@@ -296,10 +297,11 @@ filter: drop-shadow(0 20px 30px rgba(0,0,0,0.3));
 }
 
 /* --- SIDEBAR & PILL BUTTONS --- */
-.interaction-bar {
+.interaction-bar {    opacity: 0;transition: opacity 0.5s ease;
 position: fixed; right: 12px; bottom: 120px; 
 display: flex; flex-direction: column; gap: 20px; z-index: 2; align-items: center;
 }
+
 .p-avatar { 
 width: 50px; height: 50px; background: #fff; border-radius: 50%; 
 display: flex; align-items: center; justify-content: center; cursor: pointer;
@@ -421,7 +423,7 @@ p { font-size: 0.9rem; font-weight: 900; text-transform: none; max-width: 320px;
 <audio id="bgMusic" loop src="https://selhue.com/asset/bg.mp3"></audio>
 
 <main id="main" onscroll="handleAutoPlay()">
-<section>
+<section data-index="-1">
 <grid-hero>
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
@@ -1319,6 +1321,34 @@ stepsData.forEach((step, i) => {
       threshold: [0.25, 0.75]
     }
   );
+
+  observer.observe(section);
+});
+
+const interactionBar = document.querySelector('.interaction-bar');
+
+document.querySelectorAll('section').forEach(section => {
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (!interactionBar) return;
+
+      if (entry.isIntersecting) {
+        const index = entry.target.getAttribute('data-index');
+
+        interactionBar.style.transition = 'opacity 0.5s ease';
+
+        if (!index || index === "-1") {
+          interactionBar.style.opacity = '0';
+        } else {
+          interactionBar.style.opacity = '1';
+        }
+      }
+    });
+  }, {
+    root: null,
+    rootMargin: '0px',
+    threshold: 0.5
+  });
 
   observer.observe(section);
 });
