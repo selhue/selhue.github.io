@@ -271,14 +271,14 @@ nav{
 
 section{padding:96px 24px}
 .section-wrap{max-width:800px;margin:0 auto}
-.label{font-size:11px;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;color:rgba(100,160,255,0.7);margin-bottom:12px}
+.label{font-size:11px;font-weight:500;text-transform:uppercase;color:rgba(100,160,255,0.7);margin-bottom:12px}
 h2{font-size:clamp(28px,4vw,42px);font-weight:800;letter-spacing:-0.03em;line-height:1.1;margin-bottom:16px}
 .sub{font-size:15px;color:var(--muted);line-height:1.75;max-width:440px;margin-bottom:52px}
 
 .services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1px;background:var(--border);border-radius:16px;overflow:hidden}
 .service-card{background:var(--bg);padding:36px 30px;transition:background 0.2s}
 .service-card:hover{background:rgba(255,255,255,0.02)}
-.s-tag{font-size:10px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:rgba(100,160,255,0.65);margin-bottom:10px}
+.s-tag{font-size:10px;font-weight:600;text-transform:uppercase;color:rgba(100,160,255,0.65);margin-bottom:10px}
 .service-card h3{font-size:16px;font-weight:700;margin-bottom:10px;letter-spacing:-0.02em}
 .service-card p{font-size:13px;color:var(--muted);line-height:1.7}
 
@@ -408,12 +408,24 @@ footer{padding:40px 40px 28px;display:flex;justify-content:space-between;align-i
  </div>
 </div>
 
+<div style="display: flex; gap: 8px; flex-wrap: wrap; justify-content: center;">
+  <span style="font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; padding: 5px 12px; border-radius: 6px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.07); color: rgba(220,228,255,0.45); font-family: 'Poppins', sans-serif;">
+    Advertising
+  </span>
+  <span style="font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; padding: 5px 12px; border-radius: 6px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.07); color: rgba(220,228,255,0.45); font-family: 'Poppins', sans-serif;">
+    Systems
+  </span>
+  <span style="font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; padding: 5px 12px; border-radius: 6px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.07); color: rgba(220,228,255,0.45); font-family: 'Poppins', sans-serif;">
+    Subbusiness
+  </span>
+</div>
+
 <section>
   <div class="section-wrap">
     <div class="stats-row">
       <div class="stat">
         <div class="stat-n">28<span>+</span></div>
-        <div class="stat-l">Clients</div>
+        <div class="stat-l">Clients | And many more</div>
       </div>
       <div class="stat">
         <div class="stat-n"><span>#</span>1</div>
@@ -427,7 +439,8 @@ footer{padding:40px 40px 28px;display:flex;justify-content:space-between;align-i
   </div>
 </section>
 
-<section id="services" style="padding-top:0">
+
+<section  style="padding-top:0">
   <div class="section-wrap">
     <div class="label">What we do</div>
     <h2>Everything your negosyo needs to grow.</h2>
@@ -500,6 +513,115 @@ footer{padding:40px 40px 28px;display:flex;justify-content:space-between;align-i
   </div>
 </section>
 
+<section id="quote" style="padding-top:0;padding-bottom:0">
+  <div class="section-wrap">
+    <div class="label">Pricing</div>
+    <h2>What's your budget?</h2>
+    <p class="sub">Projects start at $500. Most full builds land between $500-$2,000. Tell us what you need and we'll scope it.</p>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:48px">
+      <div class="service-card" style="border-radius:14px;background:rgba(255,255,255,0.025)">
+        <div class="s-tag">Starting at</div>
+        <h3 style="font-size:28px;font-weight:900;letter-spacing:-0.04em">$500<span style="font-size:14px;font-weight:500;color:var(--muted)"> / project</span></h3>
+        <p>Focused scope - one site, one system, one campaign. Clean and fast.</p>
+      </div>
+      <div class="service-card" style="border-radius:14px;background:rgba(77,143,255,0.07)">
+        <div class="s-tag" style="color:rgba(150,190,255,0.9)">Full build</div>
+        <h3 style="font-size:28px;font-weight:900;letter-spacing:-0.04em">$2,000<span style="font-size:14px;font-weight:500;color:var(--muted)"> / project</span></h3>
+        <p>Full-scope: site, advertising setup, content system, and consulting included.</p>
+      </div>
+    </div>
+
+    <div style="background:rgba(255,255,255,0.025);border-radius:18px;padding:40px 36px">
+      <div class="label" style="margin-bottom:20px">Request a quote</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px">
+        <input id="q-name" placeholder="Your name" style="background:rgba(255,255,255,0.04);color:var(--text);font-family:'Poppins',sans-serif;font-size:13px;padding:13px 16px;border-radius:10px;border:none;outline:none;width:100%">
+        <input id="q-email" placeholder="Email address" style="background:rgba(255,255,255,0.04);color:var(--text);font-family:'Poppins',sans-serif;font-size:13px;padding:13px 16px;border-radius:10px;border:none;outline:none;width:100%">
+      </div>
+      <select id="q-budget" style="background:rgba(255,255,255,0.04);color:var(--muted);font-family:'Poppins',sans-serif;font-size:13px;padding:13px 16px;border-radius:10px;border:none;outline:none;width:100%;margin-bottom:12px;appearance:none">
+        <option value="" disabled selected>Budget range</option>
+        <option value="500">$500 - $800</option>
+        <option value="800">$800 - $1,200</option>
+        <option value="1200">$1,200 - $2,000</option>
+        <option value="2000">$2,000+</option>
+      </select>
+      <textarea id="q-msg" placeholder="Tell us about your business and what you want to grow." rows="4" style="background:rgba(255,255,255,0.04);color:var(--text);font-family:'Poppins',sans-serif;font-size:13px;padding:13px 16px;border-radius:10px;border:none;outline:none;width:100%;resize:none;margin-bottom:16px"></textarea>
+      <a id="q-send" href="#"
+        onclick="(function(){
+          var n=document.getElementById('q-name').value.trim();
+          var e=document.getElementById('q-email').value.trim();
+          var b=document.getElementById('q-budget').value;
+          var m=document.getElementById('q-msg').value.trim();
+          if(!n||!e||!b||!m){alert('Please fill out all fields.');return false;}
+          var sub=encodeURIComponent('Quote Request from '+n);
+          var body=encodeURIComponent('Name: '+n+'\nEmail: '+e+'\nBudget: '+b+'\n\n'+m);
+          window.location.href='mailto:selhuecom@gmail.com?subject='+sub+'&body='+body;
+        })();return false;"
+        class="btn-primary" style="display:inline-block">Send quote request</a>
+    </div>
+  </div>
+</section>
+
+<section id="services" style="padding-top:0">
+  <div class="section-wrap">
+    <div class="about-inner">
+      <div>
+        <div class="label">Just do it.</div>
+        <h2>Systems, strategy, and execution.</h2>
+        
+        <p>
+          Selhūe builds growth engines for modern businesses through advertising, consulting, and integrated digital systems.
+          We don’t just market brands. We design how they operate, communicate, and scale.
+        </p>
+
+        <p>
+          Our work combines business consulting with software-powered systems that connect real-world operations to digital performance.
+          From acquisition to automation, everything is built to work as one system.
+        </p>
+
+        <p style="font-size:13px;color:var(--muted2)">
+          Based in Bulacan, PH. Built for Filipino startups and growth-stage businesses.
+          Selhūe is inspired by the idea of deliberate movement. Every system we build is designed to be precise, efficient, and scalable.
+        </p>
+      </div>
+
+      <div class="about-pills">
+        <div class="pill">
+          <div class="pill-dot"></div>
+          <div>
+            <h5>Advertising systems</h5>
+            <p>Performance-driven campaigns designed to generate consistent demand across platforms.</p>
+          </div>
+        </div>
+
+        <div class="pill">
+          <div class="pill-dot"></div>
+          <div>
+            <h5>Business consulting</h5>
+            <p>Strategic guidance on operations, positioning, and scalable growth structure.</p>
+          </div>
+        </div>
+
+        <div class="pill">
+          <div class="pill-dot"></div>
+          <div>
+            <h5>Integrated business systems</h5>
+            <p>We connect software with real-world processes to automate and unify business operations.</p>
+          </div>
+        </div>
+
+        <div class="pill">
+          <div class="pill-dot"></div>
+          <div>
+            <h5>Software-enabled execution</h5>
+            <p>Custom workflows and tool integrations that turn strategy into daily operational output.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
 <section id="reviews" style="padding-top:0">
   <div class="section-wrap">
     <div class="label">Reviews</div>
