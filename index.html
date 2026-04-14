@@ -518,7 +518,6 @@ footer{padding:40px 40px 28px;display:flex;justify-content:space-between;align-i
     <div class="label">Pricing</div>
     <h2>What's your budget?</h2>
     <p class="sub">Projects start at $500. Most full builds land between $500-$2,000. Tell us what you need and we'll scope it.</p>
-
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:48px">
       <div class="service-card" style="border-radius:14px;background:rgba(255,255,255,0.025)">
         <div class="s-tag">Starting at</div>
@@ -531,28 +530,32 @@ footer{padding:40px 40px 28px;display:flex;justify-content:space-between;align-i
         <p>Full-scope: site, advertising setup, content system, and consulting included.</p>
       </div>
     </div>
-
     <div style="background:rgba(255,255,255,0.025);border-radius:18px;padding:40px 36px">
       <div class="label" style="margin-bottom:20px">Request a quote</div>
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px">
         <input id="q-name" placeholder="Your name" style="background:rgba(255,255,255,0.04);color:var(--text);font-family:'Poppins',sans-serif;font-size:13px;padding:13px 16px;border-radius:10px;border:none;outline:none;width:100%">
         <input id="q-email" placeholder="Email address" style="background:rgba(255,255,255,0.04);color:var(--text);font-family:'Poppins',sans-serif;font-size:13px;padding:13px 16px;border-radius:10px;border:none;outline:none;width:100%">
       </div>
-      <select id="q-budget" style="background:rgba(255,255,255,0.04);color:var(--muted);font-family:'Poppins',sans-serif;font-size:13px;padding:13px 16px;border-radius:10px;border:none;outline:none;width:100%;margin-bottom:12px;appearance:none">
-        <option value="" disabled selected>Budget range</option>
-        <option value="500">$500 - $800</option>
-        <option value="800">$800 - $1,200</option>
-        <option value="1200">$1,200 - $2,000</option>
-        <option value="2000">$2,000+</option>
-      </select>
+      
+      <div style="margin-bottom:12px">
+        <div style="display:flex;flex-wrap:wrap;gap:8px;background:rgba(255,255,255,0.02);padding:6px;border-radius:12px">
+          <button type="button" onclick="setBudget('500', this)" class="b-opt" style="padding:12px 4px; flex:1;border-radius:8px;border:1px solid rgba(255,255,255,0.05);background:transparent;color:var(--muted);font-size:11px;font-weight:600;cursor:pointer;transition:all 0.2s;font-family:'Poppins',sans-serif">$500-800</button>
+          <button type="button" onclick="setBudget('800', this)" class="b-opt" style="padding:12px 4px;flex:1;border-radius:8px;border:1px solid rgba(255,255,255,0.05);background:transparent;color:var(--muted);font-size:11px;font-weight:600;cursor:pointer;transition:all 0.2s;font-family:'Poppins',sans-serif">$800-1.2k</button>
+          <button type="button" onclick="setBudget('1200', this)" class="b-opt" style="padding:12px 4px;flex:1;border-radius:8px;border:1px solid rgba(255,255,255,0.05);background:transparent;color:var(--muted);font-size:11px;font-weight:600;cursor:pointer;transition:all 0.2s;font-family:'Poppins',sans-serif">$1.2k-2k</button>
+          <button type="button" onclick="setBudget('2000', this)" class="b-opt" style="padding:12px 4px;flex:1;border-radius:8px;border:1px solid rgba(255,255,255,0.05);background:transparent;color:var(--muted);font-size:11px;font-weight:600;cursor:pointer;transition:all 0.2s;font-family:'Poppins',sans-serif">$2k+</button>
+        </div>
+        <input type="hidden" id="q-budget" value="">
+      </div>
+
       <textarea id="q-msg" placeholder="Tell us about your business and what you want to grow." rows="4" style="background:rgba(255,255,255,0.04);color:var(--text);font-family:'Poppins',sans-serif;font-size:13px;padding:13px 16px;border-radius:10px;border:none;outline:none;width:100%;resize:none;margin-bottom:16px"></textarea>
+      
       <a id="q-send" href="#"
         onclick="(function(){
           var n=document.getElementById('q-name').value.trim();
           var e=document.getElementById('q-email').value.trim();
           var b=document.getElementById('q-budget').value;
           var m=document.getElementById('q-msg').value.trim();
-          if(!n||!e||!b||!m){alert('Please fill out all fields.');return false;}
+          if(!n||!e||!b||!m){alert('Please fill out all fields and select a budget.');return false;}
           var sub=encodeURIComponent('Quote Request from '+n);
           var body=encodeURIComponent('Name: '+n+'\nEmail: '+e+'\nBudget: '+b+'\n\n'+m);
           window.location.href='mailto:selhuecom@gmail.com?subject='+sub+'&body='+body;
@@ -561,6 +564,23 @@ footer{padding:40px 40px 28px;display:flex;justify-content:space-between;align-i
     </div>
   </div>
 </section>
+
+<style>
+  .b-opt.active {
+    background: var(--accent) !important;
+    color: #fff !important;
+    border-color: var(--accent) !important;
+    box-shadow: 0 4px 12px rgba(77,143,255,0.2);
+  }
+</style>
+
+<script>
+function setBudget(val, el) {
+  document.getElementById('q-budget').value = val;
+  document.querySelectorAll('.b-opt').forEach(btn => btn.classList.remove('active'));
+  el.classList.add('active');
+}
+</script>
 
 <section id="services" style="padding-top:0">
   <div class="section-wrap">
@@ -634,13 +654,22 @@ footer{padding:40px 40px 28px;display:flex;justify-content:space-between;align-i
   <blockquote>"We started getting inbound from search and TikTok at the same time. That never happened before."</blockquote>
   <div class="reviewer">
     <div class="avi">TS</div>
-    <div><div class="rname">T. Santos</div><div class="rrole">Clinic owner, Pampanga</div></div>
+    <div><div class="rname">T. Santos</div><div class="rrole">owner, Pampanga</div></div>
+  </div>
+</div>
+
+  <div class="review-card">
+  <div class="stars">★★★★★</div>
+  <blockquote>"Ang galing! I asked them for branding at pang post, it gained attraction. "</blockquote>
+  <div class="reviewer">
+    <div class="avi">RN</div>
+    <div><div class="rname">Ronald</div><div class="rrole">Bulacan</div></div>
   </div>
 </div>
 
 <div class="review-card">
   <div class="stars">★★★★★</div>
-  <blockquote>"Finally an agency that understands both content and technical SEO. Our site speed and rankings improved within weeks."</blockquote>
+  <blockquote>"Finally a team na understands both content and technical SEO. Our site speed and rankings improved within weeks."</blockquote>
   <div class="reviewer">
     <div class="avi">GM</div>
     <div><div class="rname">G. Mendoza</div><div class="rrole">Operations manager, local retail</div></div>
@@ -719,7 +748,7 @@ footer{padding:40px 40px 28px;display:flex;justify-content:space-between;align-i
       </div>
       <div class="review-card">
         <div class="stars">★★★★★</div>
-        <blockquote>"Schema, Core Web Vitals, AI Overviews - they understand the modern web at a level most agencies here don't."</blockquote>
+        <blockquote>"Schema, Core Web Vitals, AI Overviews... they understand the modern web at a level most agencies here don't."</blockquote>
         <div class="reviewer">
           <div class="avi">MR</div>
           <div><div class="rname">M. Reyes</div><div class="rrole">Marketing lead, service business</div></div>
@@ -741,6 +770,34 @@ footer{padding:40px 40px 28px;display:flex;justify-content:space-between;align-i
           <div><div class="rname">A. Lacson</div><div class="rrole">Brand owner, consumer goods</div></div>
         </div>
       </div>
+
+        <div class="review-card">
+  <div class="stars">★★★★★</div>
+  <blockquote>"Small but not Terrible, They meet and go beyong expectation"</blockquote>
+  <div class="reviewer">
+    <div class="avi">MC</div>
+    <div><div class="rname">M.C</div><div class="rrole">Bulacan</div></div>
+  </div>
+</div>
+
+<div class="review-card">
+  <div class="stars">★★★★★</div>
+  <blockquote>"Galing mag code! They did the task"</blockquote>
+  <div class="reviewer">
+    <div class="avi">PP</div>
+    <div><div class="rname">Plastipoint</div><div class="rrole">Bulacan</div></div>
+  </div>
+</div>
+
+<div class="review-card">
+  <div class="stars">★★★★★</div>
+  <blockquote>"Tutuo nga! Our project came from idea to a real product nag liwanag nga!"</blockquote>
+  <div class="reviewer">
+    <div class="avi">PP</div>
+    <div><div class="rname">Representative Liwanag</div><div class="rrole">Bulacan</div></div>
+  </div>
+</div>
+
       <div class="review-card">
         <div class="stars">★★★★★</div>
         <blockquote>"Smart, fast, genuinely invested. You never feel like just a number. They cap clients intentionally and it shows."</blockquote>
