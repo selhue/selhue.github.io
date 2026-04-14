@@ -38,7 +38,7 @@
 <link rel="apple-touch-icon" href="https://selhue.com/asset/icon.jpg">
 
 <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@900&display=swap" rel="stylesheet">
-
+<link rel="preconnect" href="selhue.com">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 <script type="application/ld+json">
 {
@@ -78,9 +78,31 @@
 </head>
 
 <body>
-    <audio id="bgMusic" loop src="https://selhue.com/asset/bg.mp3"></audio>
+  
+    <bgm>
 
-    <app  onscroll="handleAutoPlay()">
+<audio id="bg-music" src="https://selhue.com/asset/bg.mp3"></audio>
+
+<script>
+  const audio = document.getElementById("bg-music");
+audio.volume=0.38;
+  // Try autoplay on load
+  window.addEventListener("load", () => {
+    audio.play().catch(() => {
+      audio.volume=0.38;
+      console.log("Autoplay blocked by browser");
+    });
+  });
+
+  // Fallback: play after user interaction
+  document.addEventListener("click", () => {
+    audio.play();
+    audio.volume=0.38;
+  }, { once: true });
+</script>
+
+</bgm>
+    <app>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;900&family=Alata&family=Lora:wght@400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
@@ -609,19 +631,6 @@ footer{padding:40px 40px 28px;display:flex;justify-content:space-between;align-i
   <div class="f-copy">© 2026 Selhūe · Bulacan, PH</div>
 </footer>
 </app>
-<bg>
-    <script>
-        function handleAutoPlay() {
-if(!hasPlayed) {
-const audio = document.getElementById('bgMusic');
-audio.volume = 0.3;
-audio.play().catch(() => { }); 
-document.getElementById('vinyl').classList.add('playing');
-hasPlayed = true;
-}
-}
-handleAutoPlay();
-    </script>
-</bg>
+
 </body>
 </html>
