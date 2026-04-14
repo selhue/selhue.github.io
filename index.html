@@ -78,27 +78,38 @@
 </head>
 
 <body>
-  
-    <bgm>
+<bgm>
 
-<audio id="bg-music" autoplay src="https://selhue.com/asset/bg.mp3"></audio>
+<audio autoplay id="bg-music" src="https://selhue.com/asset/bg.mp3"></audio>
 
 <script>
-  const audio = document.getElementById("bg-music");
-audio.volume=0.38;
-  // Try autoplay on load
-  window.addEventListener("load", () => {
-    audio.play().catch(() => {
-      audio.volume=0.38;
-      console.log("Autoplay blocked by browser");
-    });
-  });
+const audio = document.getElementById("bg-music");
+audio.volume = 0.38;
 
-  // Fallback: play after user interaction
-  document.addEventListener("click", () => {
-    audio.play();
-    audio.volume=0.38;
-  }, { once: true });
+let retryInterval;
+
+// function to attempt play
+function tryPlay() {
+  audio.play().then(() => {
+    // success: stop retrying
+    clearInterval(retryInterval);
+    console.log("Audio playing, loop removed");
+  }).catch(() => {
+    console.log("Blocked, retrying...");
+  });
+}
+
+// start retry loop
+window.addEventListener("load", () => {
+  tryPlay();
+  retryInterval = setInterval(tryPlay, 1000); // retry every 1s
+});
+
+// user interaction fallback (guaranteed trigger)
+document.addEventListener("click", () => {
+  tryPlay();
+}, { once: true });
+
 </script>
 
 </bgm>
