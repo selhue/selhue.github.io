@@ -80,7 +80,7 @@
 <body>
 <bgm>
 
-<audio autoplay id="bg-music" src="https://selhue.com/asset/bg.mp3"></audio>
+<audio id="bg-music" src="https://selhue.com/asset/bg.mp3"></audio>
 
 <script>
 const audio = document.getElementById("bg-music");
@@ -88,27 +88,41 @@ audio.volume = 0.38;
 
 let retryInterval;
 
-// function to attempt play
+// try to play
 function tryPlay() {
   audio.play().then(() => {
-    // success: stop retrying
-    clearInterval(retryInterval);
-    console.log("Audio playing, loop removed");
-  }).catch(() => {
-    console.log("Blocked, retrying...");
-  });
+    stopAll();
+  }).catch(() => {});
 }
 
-// start retry loop
-window.addEventListener("load", () => {
-  tryPlay();
-  retryInterval = setInterval(tryPlay, 1000); // retry every 1s
+// stop retry + remove listeners once successful
+function stopAll() {
+  clearInterval(retryInterval);
+  events.forEach(e => document.removeEventListener(e, tryPlay, true));
+  window.removeEventListener("load", tryPlay);
+  console.log("Audio started, all listeners removed");
+}
+
+// events to trigger play
+const events = [
+  "click",
+  "mousedown",
+  "mouseup",
+  "mousemove",
+  "touchstart",
+  "touchend",
+  "keydown",
+  "scroll"
+];
+
+// attach all event listeners
+events.forEach(e => {
+  document.addEventListener(e, tryPlay, true);
 });
 
-// user interaction fallback (guaranteed trigger)
-document.addEventListener("click", () => {
-  tryPlay();
-}, { once: true });
+// initial attempt + retry loop
+window.addEventListener("load", tryPlay);
+retryInterval = setInterval(tryPlay, 1000);
 
 </script>
 
@@ -192,7 +206,7 @@ nav{
 .badge-dot{width:5px;height:5px;border-radius:50%;background:#4d8fff;animation:pulse 2s infinite}
 @keyframes pulse{0%,100%{opacity:1}50%{opacity:0.3}}
 .hero h1{
-  font-size:clamp(56px,11vw,120px);font-weight:900;
+  font-size:clamp(54px,11vw,90px);font-weight:900;
   line-height:0.92;letter-spacing:-0.05em;
   margin-bottom:28px;max-width:640px;
 }
@@ -344,14 +358,14 @@ footer{padding:40px 40px 28px;display:flex;justify-content:space-between;align-i
   <h1>Know it.<br>Known by<br><span class="hl">locals.</span></h1>
   <p>Selhūe helps Filipino businesses dominate digital through precision AI and smart advertising.</p>
   <div class="hero-actions">
-    <a href="mailto:selhuecom@gmail.com" class="btn-primary">Get known.</a>
+    <a href="mailto:selhuecom@gmail.com" class="btn-primary">Get Started.</a>
     <a href="#services" class="btn-ghost">See what we do</a>
   </div>
 </div>
 
 <div class="strip">
   <div class="strip-track">
-    <span class="strip-item">All<span class="c-yellow">Write</span></span>
+    <span class="strip-item"><span class="c-yellow">All</span><span>Write</span></span>
     <span class="strip-item"><span>Ker</span> <span class="c-green">Trees</span></span>
     <span class="strip-item">Pa<span> </span>Ano</span>
     <span class="strip-item"><span class="c-orange">Velrie</span></span>
@@ -360,18 +374,18 @@ footer{padding:40px 40px 28px;display:flex;justify-content:space-between;align-i
     <span class="strip-item"><span class="c-green">Plasti</span>Point</span>
     <span class="strip-item">Ov<span> </span>Right</span>
     <span class="strip-item">Buil<span> </span>Dex</span>
-    <span class="strip-item"><span class="c-red">Sign</span>edRed</span>
-    <span class="strip-item">All<span class="c-yellow">Write</span></span>
-    <span class="strip-item">Ker<span> </span>Trees</span>
+    <span class="strip-item"><span>Signed</span><span class="c-red">Red</span></span>
+      <span class="strip-item"><span class="c-yellow">All</span><span>Write</span></span>
+    <span class="strip-item"><span>Ker</span> <span class="c-green">Trees</span></span>
     <span class="strip-item">Pa<span> </span>Ano</span>
     <span class="strip-item"><span class="c-orange">Velrie</span></span>
-    <span class="strip-item">Liwanag</span>
+    <span class="strip-item" style="">Liwanag</span>
     <span class="strip-item"><span class="c-red">Ronald</span></span>
     <span class="strip-item"><span class="c-green">Plasti</span>Point</span>
     <span class="strip-item">Ov<span> </span>Right</span>
     <span class="strip-item">Buil<span> </span>Dex</span>
-    <span class="strip-item"><span class="c-red">Sign</span>edRed</span>
-  </div>
+    <span class="strip-item"><span>Signed</span><span class="c-red">Red</span></span>
+ </div>
 </div>
 
 <section>
