@@ -1,2 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 | selhue</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;800&display=swap');
+        
+        html { -webkit-tap-highlight-color: transparent; font-family: 'Plus Jakarta Sans', sans-serif; }
+        
+        /* DARK MESH: Deep radial glow */
+        .dark-mesh {
+            background-color: #09090b;
+            background-image: radial-gradient(at 50% 50%, hsla(240,5%,15%,1) 0, transparent 80%);
+        }
 
-<meta http-equiv="refresh" content="0; url=https://selhue.com/" />
+        /* PILL BUTTON STYLE */
+        .pill-btn {
+            background: #ffffff;
+            color: #000000;
+            padding: 1.25rem 2.5rem;
+            border-radius: 9999px; /* Absolute pill shape */
+            font-weight: 800;
+            font-size: 1.125rem;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            box-shadow: 0 10px 30px rgba(255,255,255,0.05);
+        }
+        
+        .pill-btn:active { transform: scale(0.94); }
+    </style>
+</head>
+<body class="dark-mesh text-white lowercase selection:bg-white selection:text-black">
+
+   
+    <section class="min-h-screen flex flex-col justify-center px-8 text-center relative overflow-hidden">    <h1 class="text-xl font-black tracking-tighter mb-10">selhue.</h1>
+        <div class="max-w-[800px] mx-auto">
+       
+            <h2 class="text-[15vw] md:text-[110px] font-extrabold leading-[0.85] mb-12 tracking-tighter">
+                this shop<br><span class="text-zinc-500">is not here.</span>
+            </h2>
+
+            <div class="flex flex-col items-center gap-10">
+                <button onclick="window.location.href='https://selhue.com'" class="pill-btn">
+                    return to store
+                </button>
+                
+                <div class="pt-16 border-t border-white/5 w-full max-w-[280px]">
+                    <p class="text-[9px] font-black uppercase text-zinc-500 mb-3 tracking-widest">contact support</p>
+                    <a href="mailto:selhuecom@gmail.com" class="text-sm font-bold text-zinc-300 hover:text-white transition-colors underline decoration-zinc-700 underline-offset-8">
+                        selhuecom@gmail.com
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="fixed bottom-8 left-0 right-0 text-center pointer-events-none">
+        <p class="text-[10px] font-bold text-zinc-700 uppercase tracking-widest">© 2026 selhue</p>
+    </footer>
+
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>
