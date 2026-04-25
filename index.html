@@ -872,5 +872,111 @@ function setBudget(val, el) {
 </footer>
 </app>
 
+  <are-you-sure>
+    <script>
+(function () {
+  let fired = false;
+  let interacted = false;
+
+  const messages = [
+    "Hey are you leaving",
+    "Still here or gone",
+    "Wait a second",
+    "You sure about that",
+    "Don’t go yet",
+    "Quick check before you leave",
+    "You might miss something",
+    "Leaving already"
+  ];
+
+  function msg() {
+    return messages[Math.floor(Math.random() * messages.length)];
+  }
+
+  function markInteract() {
+    interacted = true;
+  }
+
+  ["click", "keydown", "scroll", "mousemove"].forEach(e => {
+    window.addEventListener(e, markInteract, { once: true });
+  });
+
+  function show() {
+    if (fired || !interacted) return;
+    fired = true;
+
+    const box = document.createElement("div");
+    box.style = "position:fixed;inset:0;background:rgba(0,0,0,0.4);display:flex;align-items:center;justify-content:center;z-index:99999;font-family:sans-serif";
+
+    box.innerHTML = `
+      <div style="
+      text-transform: none;
+      font-family: 'Plus Jakarta Sans', sans-serif; background:#fff;padding:20px;justify-content: center;height: max-content;width: 40dvw;display: flex;flex-direction: column;border-radius:41px;text-align:center;max-width:280px">
+        <p style="margin-top: 42px;margin-bottom: 49px;"
+        class="
+        text-black
+        font-black text-base active:scale-95 transition-transform
+        ">${msg()}</p>
+
+<span style="display: flex;flex-direction: column;
+    ">
+
+<button id="stay" class="btn-pill bg-white text-black px-10 py-4 font-black text-base active:scale-95 transition-transform"
+style="color: white;flex: 1;background: #1f1e1e;border-radius:50px;">Stay</button>
+
+<button id="leave" 
+class="btn-pill text-black px-10 py-2 font-black text-base active:scale-95 transition-transform"
+style="flex: 1;border-radius:50px;">Leave</button>
+
+</span>
+        
+        
+      </div>
+    `;
+
+    document.body.appendChild(box);
+
+    document.getElementById("stay").onclick = () => {
+      fired = false;
+      box.remove();
+      window.focus();
+    };
+
+    document.getElementById("leave").onclick = () => {
+      window.location.href = "https://selhue.com";
+    };
+  }
+
+  document.addEventListener("visibilitychange", () => {
+    if (document.hidden) {
+      setTimeout(show, 200);
+    }
+  });
+
+  window.addEventListener("blur", () => {
+    setTimeout(show, 200);
+  });
+
+  window.addEventListener("mouseout", e => {
+    if (e.clientY <= 0) show();
+  });
+
+  window.addEventListener("beforeunload", e => {
+    if (interacted) {
+      e.preventDefault();
+      e.returnValue = "";
+    }
+  });
+
+  setInterval(() => {
+    if (!document.hasFocus()) {
+      window.focus();
+    }
+  }, 2000);
+
+})();
+</script>
+</are-you-sure>
+  
 </body>
 </html>
