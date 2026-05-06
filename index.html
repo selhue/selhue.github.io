@@ -16,8 +16,6 @@
 <!-- Canonical -->
 <link rel="canonical" href="https://selhue.com">
 
-  <meta name="trustpilot-one-time-domain-verification-id" content="8eea7a6c-8842-4504-887b-a4d07ebedd61"/>
-
 <!-- Open Graph -->
 <meta property="og:title" content="Selhue | Local-First Digital Advertising Philippines">
 <meta property="og:description" content="We help Philippine businesses grow with branding, Facebook Advertising, TikTok content, and measurable digital results.">
@@ -348,7 +346,23 @@ footer{padding:40px 40px 28px;display:flex;justify-content:space-between;align-i
 </nav>
 
 
+<style>
+.deco-grid {
+    position: absolute;
+    inset: 0;
+    background-image: 
+        linear-gradient(rgba(255,255,255,.085) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.095) 1px, transparent 1px);
+    background-size: 80px 80px;
+    z-index: ;
+    pointer-events: none;
+    -webkit-mask-image: radial-gradient(ellipse at center, black 0%, transparent 70%);
+    mask-image: radial-gradient(ellipse at center, black 0%, transparent 70%);
+}
+</style>
 <div class="hero">
+  <div class="deco-grid"></div>
+
   <div class="hero-glow">
     <div class="glow-orb orb1"></div>
     <div class="glow-orb orb2"></div>
@@ -358,9 +372,9 @@ footer{padding:40px 40px 28px;display:flex;justify-content:space-between;align-i
     <span class="badge-dot"></span>
     AI-Assist · Philippines
   </div>
-  <h1>Know it.<br>Known by<br><span class="hl">locals.</span></h1>
+  <h1 style="z-index:2;" >Know it.<br>Known by<br><span class="hl">locals.</span></h1>
   <p>Selhūe helps Filipino businesses dominate digital through precision AI and smart advertising.</p>
-  <div class="hero-actions">
+  <div  style="z-index:2;"class="hero-actions">
     <a href="mailto:selhuecom@gmail.com" class="btn-primary">Get Started.</a>
     <a href="#services" class="btn-ghost">See what we do</a>
   </div>
