@@ -136,27 +136,27 @@ retryInterval = setInterval(tryPlay, 1000);
 
 
 /* Scrollbar (Chrome, Edge, Safari) */
-::-webkit-scrollbar {
+*::-webkit-scrollbar {
   width: 10px;
 }
 
-::-webkit-scrollbar-track {
+*::-webkit-scrollbar-track {
   background: #18191e;
 }
 
-::-webkit-scrollbar-thumb {
+* ::-webkit-scrollbar-thumb {
   background: #222124;
   border-radius: 6px;
 }
 
-::-webkit-scrollbar-thumb:hover {
+*::-webkit-scrollbar-thumb:hover {
   background: #0c0b0c;
 }
 
 /* Firefox */
-html {
+* {
   scrollbar-width: thin;
-  scrollbar-color: #1f1f26 #636363;
+  scrollbar-color: #3c3a3a #05070f ;
 }
 
 *{margin:0;padding:0;box-sizing:border-box}
@@ -354,7 +354,7 @@ footer{padding:40px 40px 28px;display:flex;justify-content:space-between;align-i
         linear-gradient(rgba(255,255,255,.065) 1px, transparent 1px),
         linear-gradient(90deg, rgba(255,255,255,.065) 1px, transparent 1px);
     background-size: 80px 80px;
-    z-index: ;
+
     pointer-events: none;
     -webkit-mask-image: radial-gradient(ellipse at center, black 0%, transparent 70%);
     mask-image: radial-gradient(ellipse at center, black 0%, transparent 70%);
@@ -377,7 +377,7 @@ footer{padding:40px 40px 28px;display:flex;justify-content:space-between;align-i
   <div  style="z-index:2;"class="hero-actions">
     <a href="mailto:selhuecom@gmail.com" class="btn-primary">Get Started.</a>
     <a href="#services" class="btn-ghost">See what we do</a>
-  </div>
+  </div> 
 </div>
 
 
@@ -386,7 +386,7 @@ footer{padding:40px 40px 28px;display:flex;justify-content:space-between;align-i
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;800&display=swap" rel="stylesheet">
 
 <style>
-    ht,l {
+    html {
         --brand-bg: #050505;
         --brand-white: #FBFAFF;
         --jakarta: 'Plus Jakarta Sans', sans-serif;
@@ -405,6 +405,7 @@ footer{padding:40px 40px 28px;display:flex;justify-content:space-between;align-i
         padding: 80px 20px;
         position: relative;
 
+      overflow-x: scroll;
         min-height: 100px; 
         transition: min-height 0.6s cubic-bezier(0.23, 1, 0.32, 1);
     }
@@ -448,7 +449,6 @@ footer{padding:40px 40px 28px;display:flex;justify-content:space-between;align-i
         align-items: center;
         justify-items: center;
         width: 100%;
-      
         min-height: 150px; 
         max-width: 1100px;
         transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
@@ -473,7 +473,6 @@ footer{padding:40px 40px 28px;display:flex;justify-content:space-between;align-i
         font-weight: 500; 
         letter-spacing: -0.06em;
         opacity: 0;
-        filter: blur(10px);
         position: absolute;
         animation: cycleBrands var(--cycle-speed) infinite;
         transition: transform 0.3s ease, filter 0.3s ease, opacity 0.3s ease;
@@ -484,8 +483,8 @@ footer{padding:40px 40px 28px;display:flex;justify-content:space-between;align-i
     .row-3 { animation-delay: 6s; }
 
     @keyframes cycleBrands {
-        0%, 30% { opacity: 1; filter: blur(0px); position: relative; }
-        31%, 100% { opacity: 0; filter: blur(10px); position: absolute; }
+        0%, 30% { opacity: 1;position: relative; }
+        31%, 100% { opacity: 0;  position: absolute; }
     }
 
     /* --- EXPANDED MODE --- */
