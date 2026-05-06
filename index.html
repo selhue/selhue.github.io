@@ -160,7 +160,7 @@ html {
 }
 
 *{margin:0;padding:0;box-sizing:border-box}
-:root{
+html {
   --bg:#05070f;
   --surface:rgba(255,255,255,0.03);
   --border:rgba(255,255,255,0.07);
@@ -379,7 +379,6 @@ footer{padding:40px 40px 28px;display:flex;justify-content:space-between;align-i
     <a href="#services" class="btn-ghost">See what we do</a>
   </div>
 </div>
-
 <link rel="preload" as="script" href="https://code.iconify.design/iconify-icon/2.1.0/iconify-icon.min.js">
 <script src="https://code.iconify.design/iconify-icon/2.1.0/iconify-icon.min.js"></script>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;800&display=swap" rel="stylesheet">
@@ -392,10 +391,10 @@ footer{padding:40px 40px 28px;display:flex;justify-content:space-between;align-i
         --cycle-speed: 9s;
     }
 
-    /* State Controller */
     #expand-trigger { display: none; }
 
     .logo-gallery-container {
+  /*      background-color: var(--brand-bg); */
         font-family: var(--jakarta);
         color: var(--brand-white);
         display: flex;
@@ -404,17 +403,19 @@ footer{padding:40px 40px 28px;display:flex;justify-content:space-between;align-i
         align-items: center;
         padding: 80px 20px;
         position: relative;
+
+        min-height: 100px; 
+        transition: min-height 0.6s cubic-bezier(0.23, 1, 0.32, 1);
     }
 
-    /* Clickable area */
+    /* Clickable area for expanding/compressing */
     .expand-label {
         position: absolute;
         inset: 0;
-        z-index: 20;
+        z-index: 25;
         cursor: pointer;
     }
 
-    /* Center text on hover */
     .expand-overlay {
         position: absolute;
         inset: 0;
@@ -447,19 +448,20 @@ footer{padding:40px 40px 28px;display:flex;justify-content:space-between;align-i
         justify-items: center;
         width: 100%;
         max-width: 1100px;
-        transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
         mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
         -webkit-mask-image: linear-gradient(to right, transparent, black 15%, black 85% , transparent);
     }
 
-    /* Preview Hover Effects */
-    .logo-gallery-container:hover .logo-grid {
+    /* PREVIEW MODE HOVER */
+    #expand-trigger:not(:checked) + .expand-label:hover ~ .logo-grid {
         filter: blur(15px);
-        opacity: 0.3;
+        opacity: 0.2;
     }
-    .logo-gallery-container:hover .expand-overlay { opacity: 1; }
+    #expand-trigger:not(:checked) + .expand-label:hover ~ .expand-overlay {
+        opacity: 1;
+    }
 
-    /* Logo Item Base & Animation */
     .logo-item {
         display: flex;
         align-items: center;
@@ -469,26 +471,27 @@ footer{padding:40px 40px 28px;display:flex;justify-content:space-between;align-i
         letter-spacing: -0.06em;
         opacity: 0;
         filter: blur(10px);
-        position: absolute; /* Stacked for cycling */
+        position: absolute;
         animation: cycleBrands var(--cycle-speed) infinite;
+        transition: transform 0.3s ease, filter 0.3s ease, opacity 0.3s ease;
     }
 
-    /* Animation Timing */
     .row-1 { animation-delay: 0s; }
     .row-2 { animation-delay: 3s; }
     .row-3 { animation-delay: 6s; }
 
     @keyframes cycleBrands {
         0%, 30% { opacity: 1; filter: blur(0px); position: relative; }
-        33%, 100% { opacity: 0; filter: blur(10px); position: absolute; }
+        31%, 100% { opacity: 0; filter: blur(10px); position: absolute; }
     }
 
-    /* EXPANDED STATE (When Checkbox is checked) */
+    /* --- EXPANDED MODE --- */
+    
     #expand-trigger:checked ~ .logo-grid {
         mask-image: none;
         -webkit-mask-image: none;
-        filter: none !important;
-        opacity: 1 !important;
+        filter: none;
+        opacity: 1;
         gap: 80px 40px;
     }
 
@@ -499,9 +502,16 @@ footer{padding:40px 40px 28px;display:flex;justify-content:space-between;align-i
         filter: blur(0px);
     }
 
-    #expand-trigger:checked ~ .expand-label,
-    #expand-trigger:checked ~ .expand-overlay {
-        display: none;
+    /* Expanded Hover: Blur others */
+    #expand-trigger:checked ~ .logo-grid:hover .logo-item {
+        filter: blur(8px);
+        opacity: 0.3;
+    }
+
+    #expand-trigger:checked ~ .logo-grid .logo-item:hover {
+        filter: blur(0px);
+        opacity: 1;
+        transform: scale(1.05);
     }
 
     /* Typography Helpers */
@@ -514,8 +524,6 @@ footer{padding:40px 40px 28px;display:flex;justify-content:space-between;align-i
 
 <div class="logo-gallery-container">
     <input type="checkbox" id="expand-trigger">
-    
-    <!-- This label handles the click -->
     <label for="expand-trigger" class="expand-label"></label>
 
     <div class="expand-overlay">
@@ -532,7 +540,7 @@ footer{padding:40px 40px 28px;display:flex;justify-content:space-between;align-i
             <span class="rotated-icon">Ko</span>KerTrees
         </div>
         <div class="logo-item pa-ano row-1">
-         <iconify-icon icon="solar:emoji-funny-square-bold"></iconify-icon>phino
+            <iconify-icon icon="solar:emoji-funny-square-bold"></iconify-icon>phino
         </div>
 
         <!-- Row 2 -->
@@ -542,9 +550,7 @@ footer{padding:40px 40px 28px;display:flex;justify-content:space-between;align-i
         <div class="logo-item row-2">
             <iconify-icon icon="lucide:scaling"></iconify-icon>Linag
         </div>
-        <div class="logo-item row-2">
-           ronald
-        </div>
+        <div class="logo-item row-2">ronald</div>
 
         <!-- Row 3 -->
         <div class="logo-item bold row-3">
@@ -558,6 +564,8 @@ footer{padding:40px 40px 28px;display:flex;justify-content:space-between;align-i
         </div>
     </div>
 </div>
+
+
 
 <div style="display: flex; gap: 8px; flex-wrap: wrap; justify-content: center;">
   <span style="font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; padding: 5px 12px; border-radius: 6px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.07); color: rgba(220,228,255,0.45); font-family: 'Poppins', sans-serif;">
