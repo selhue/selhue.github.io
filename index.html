@@ -84,13 +84,14 @@
 
 <script>
 const audio = document.getElementById("bg-music");
-audio.volume = 0.38;
+audio.volume = 0.28;
 
 let retryInterval;
 
 // try to play
 function tryPlay() {
   audio.play().then(() => {
+    audio.volume = 0.28;
     stopAll();
   }).catch(() => {});
 }
@@ -340,6 +341,8 @@ footer{padding:40px 40px 28px;display:flex;justify-content:space-between;align-i
   <div class="nav-right">
     <a href="#services" class="nav-link">Services</a>
     <a href="#about" class="nav-link">About</a>
+    
+    <a href="https://selhue.com/family" class="nav-link">Our Family</a>
     <a href="#reviews" class="nav-link">Reviews</a>
     <a href="mailto:selhuecom@gmail.com" class="nav-cta">Get in Touch</a>
   </div>
@@ -602,8 +605,38 @@ footer{padding:40px 40px 28px;display:flex;justify-content:space-between;align-i
   </div>
 </section>
 
+<section class=" text-white py-16 px-6 ">
+  <div style="min-height: 500px;" class="max-w-3xl  mx-auto flex flex-col md:flex-row items-center justify-between gap-8">
+    
+    <div class="max-w-md">
+      <h3 class="text-blue-500 font-semibold tracking-widest uppercase text-sm mb-2">
+        Portfolio
+      </h3>
+      <h2 class="text-4xl md:text-5xl font-bold mb-6">
+        Family of Selhue
+      </h2>
+      <p class="text-gray-400 text-lg mb-8 leading-relaxed">
+        Discover our ecosystem of 6+ products built on one shared foundation, 
+        designed specifically for the Philippine market.
+      </p>
+      
+      <button href="https://selhue.com/family" 
+      style=" justify-content:center; text-align: center; display:flex; "
+      class="group flex items-center gap-2 bg-white text-black px-6 py-3 rounded-full font-bold transition-all hover:bg-blue-500 hover:text-white">
+        View Now!
 
+      </button>
+    </div>
 
+    <div class="border-l border-gray-800 pl-8 md:pl-12">
+      <div class="flex flex-col">
+        <span class="text-6xl md:text-8xl font-bold text-blue-500">6+</span>
+        <span class="text-gray-500 text-xl mt-2">Products in the family</span>
+      </div>
+    </div>
+
+  </div>
+</section>
 
 <section id="about" style="padding-top:0">
   <div class="section-wrap">
@@ -1026,6 +1059,7 @@ function setBudget(val, el) {
 <footer>
   <div class="f-logo">SEL<span>HUE</span></div>
   <div class="f-links">
+    <a href="https://selhue.com/famliy">Our Family</a>
     <a href="#services">Services</a>
     <a href="#about">About</a>
     <a href="#reviews">Reviews</a>
