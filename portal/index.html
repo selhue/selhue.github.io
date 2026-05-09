@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>selhue portal</title>
+    <!-- Primary SEO -->
+<title>Selhue Portal | Internal Management & Client Dashboard</title>
+<meta name="description" content="Access the Selhue internal portal for client management, campaign operations, content workflows, analytics, and team collaboration.">
+<meta name="keywords" content="Selhue Portal, Selhue Internal, Selhue Dashboard, Internal Management System, Campaign Dashboard PH, Content Workflow Portal, Client Portal Philippines">
+<meta name="robots" content="noindex, nofollow">
+<meta name="author" content="Selhue">
+<meta name="theme-color" content="#050505">
+
+<!-- Canonical -->
+<link rel="canonical" href="https://selhue.com/portal">
+
+<!-- Open Graph -->
+<meta property="og:title" content="Selhue Portal | Internal Dashboard">
+<meta property="og:description" content="Internal access portal for Selhue operations, campaign management, content systems, analytics, and team workflows.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://selhue.com/portal">
+<meta property="og:site_name" content="Selhue">
+
+<meta property="og:image" content="https://selhue.com/asset/bn.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Selhue Portal | Internal System">
+<meta name="twitter:description" content="Secure internal portal for Selhue team operations and client management.">
+<meta name="twitter:image" content="https://selhue.com/asset/bn.png">
+
+<!-- Favicon -->
+<link rel="icon" type="image/jpeg" href="https://selhue.com/asset/icon.jpg">
+<link rel="apple-touch-icon" href="https://selhue.com/asset/icon.jpg">
+
+<!-- Performance -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://selhue.com">
+
+<!-- Fonts & Icons -->
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+<!-- Structured Data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "name": "Selhue",
+      "url": "https://selhue.com",
+      "logo": "https://selhue.com/asset/icon.jpg",
+      "description": "Philippine-based digital advertising brand specializing in social media growth, Facebook campaigns, TikTok content, branding, and performance marketing.",
+      "foundingDate": "2026",
+      "areaServed": "Philippines"
+    },
+    {
+      "@type": "WebSite",
+      "name": "Selhue Portal",
+      "url": "https://selhue.com/portal",
+      "publisher": {
+        "@type": "Organization",
+        "name": "Selhue"
+      }
+    },
+    {
+      "@type": "WebApplication",
+      "name": "Selhue Portal",
+      "applicationCategory": "BusinessApplication",
+      "operatingSystem": "Web",
+      "url": "https://selhue.com/portal",
+      "description": "Internal business portal for campaign management, analytics, content workflow, and operational tools.",
+      "creator": {
+        "@type": "Organization",
+        "name": "Selhue"
+      }
+    }
+  ]
+}
+</script>
+    <!-- Plus Jakarta Sans Import -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap" rel="stylesheet">
+    
+    <style>
+        html {
+            --bg-color: #000000;
+            --card-bg: #040404;
+            --text-color: #f0f4f8;
+            --accent-blue: #3b82f6; 
+            --border-color: #1e293b;
+        }
+
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            overflow: hidden;
+        }
+
+        /* Initial state: Hide everything */
+        header, main {
+            display: none;
+        }
+
+        /* Show when authenticated */
+        body.authenticated header {
+            display: flex;
+        }
+        body.authenticated main {
+            display: block;
+        }
+
+        /* Auth Screen (Centered) */
+        #auth-overlay {
+            position: fixed;
+            inset: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: var(--bg-color);
+            z-index: 9999;
+        }
+
+        body.authenticated #auth-overlay {
+            display: none;
+        }
+
+        header {
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 24px;
+            background: var(--card-bg);
+            height: 64px;
+            box-sizing: border-box;
+        }
+
+        .logo {
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            font-size: 1.4rem;
+            color: var(--text-color);
+        }
+
+        .logo span {
+            color: var(--accent-blue);
+        }
+
+        main {
+            height: calc(100vh - 64px);
+            padding: 16px;
+            box-sizing: border-box;
+        }
+
+        .content-container {
+            width: 100%;
+
+    display: flex;
+            margin: auto;
+            height: 100%;
+            background: var(--card-bg);
+            border-radius: 12px;
+            overflow-y: scroll;
+            overflow: hidden;
+        }
+
+        iframe {
+            width: 100%;
+
+            min-height: 100dvh;
+            height: 100dvh;
+            border: none;
+        }
+
+        * [data-sentry-element="BadgeContent"] {
+            display: none !important;
+        }
+    </style>
+
+    <script async src="https://tally.so/widgets/embed.js"></script>
+</head>
+<body>
+
+    <!-- This shows only when NOT logged in -->
+    <div id="auth-overlay">
+        <div id="auth-root"></div>
+    </div>
+
+    <header>
+        <div class="logo">SEL<span>HUE</span></div>
+        <div id="user-button-root"></div>
+    </header>
+
+    <main>
+        <div class="content-container" id="cC">
+       
+        </div>
+    </main>
+
+
+<style>
+  clerk #auth-root {
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+    font-family: sans-serif;
+  }
+
+  clerk .cl-modalContent, clerk .cl-userButtonPopoverCard, clerk .cl-card {
+    background-color: #ffffff !important;
+    filter: invert(1) hue-rotate(180deg) !important;
+    border: none !important;
+    box-shadow: none !important;
+  }
+ clerk .cl-cardBoxclerk .cl-card {
+    color-scheme: dark;
+    color: #ffffff;
+    background-color: #000000 !important;
+  }
+ clerk .cl-userButtonAvatarBoxclerk .cl-avatarBox *, 
+ clerk .cl-userPreviewAvatarContainerclerk .cl-avatarBox * {
+    filter: invert(1) hue-rotate(180deg) !important;
+  }
+ clerk .cl-dividerRow,clerk .cl-dividerLine,clerk .cl-internal-f6u85a,
+ clerk .cl-internal-1dauvpw,clerk .cl-internal-b3fm6y, [class*="PoweredBy"] {
+    display: none !important;
+  }
+ clerk .cl-navbar,clerk .cl-sidebar { border: none !important; }
+ clerk .cl-footer > div:last-child { display: none; }
+ clerk .cl-formButtonPrimary {
+    background-color: #000000 !important; 
+    color: #ffffff !important; 
+    border: none !important;
+    font-weight: 900 !important;
+  }
+ clerk .cl-userButtonPopoverFooter { display: none !important; }
+ clerk .cl-modalBackdrop,clerk .cl-modalBackdrop::before,clerk .cl-modalBackdrop::after,clerk .cl-cardBox {
+    border: unset !important;
+    box-shadow: unset !important;
+  }
+ clerk .cl-navbar > div { background: unset; }
+</style>
+
+  
+
+<style>
+  
+clerk * {
+  font-family: Arial, Helvetica, sans-serif;
+}
+.cl-modalContent, 
+.cl-userButtonPopoverCard,
+.cl-card {
+color:#101010 !important;
+border: none !important;
+box-shadow: none !important;
+  font-family: Arial, Helvetica, sans-serif;
+}
+.cl-cardBox .cl-card,.cl-navbarButton,
+.cl-scrollBox,.cl-userButtonPopoverRootBox {
+color-scheme: dark;
+color: #ffffff;
+  font-family: Arial, Helvetica, sans-serif;
+background-color: #000000 !important;
+}
+
+.cl-userButtonAvatarBox .cl-avatarBox  * {
+
+filter: invert(1) hue-rotate(-180deg) !important;
+}
+
+
+.cl-modalBackdrop, .cl-modalBackdrop::before, .cl-modalBackdrop::after, .cl-cardBox,
+.cl-modalContent *,.cl-userButtonPopoverMain *,.cl-userButtonPopoverMain {
+  background: #000;
+    font-family: Arial, Helvetica, sans-serif;
+  color: #fafafa;
+}
+
+.cl-userButtonPopoverCard.cl-card.cl-userButton-popover,.cl-userButtonPopoverMain {
+    background: #000;
+  color: #fafafa ;
+}
+
+.cl-dividerRow, .cl-dividerLine, .cl-internal-f6u85a,
+.cl-internal-1dauvpw, .cl-internal-b3fm6y, [class*="PoweredBy"],
+.cl-rootBox > .cl-card > div:last-of-type {
+display: none !important;
+}
+
+
+.cl-navbar, .cl-sidebar {
+border: none !important;
+}
+
+.cl-footer > div:last-child {
+display: none;
+}
+.cl-formButtonPrimary {
+background-color: #000000 !important; 
+color: #ffffff !important; 
+border: none !important;
+font-weight: 900 !important;
+}
+
+*.cl-userButtonPopoverFooter {
+display: none !important;
+}
+
+.cl-modalBackdrop,.cl-modalBackdrop::before,
+.cl-modalBackdrop::after,.cl-cardBox {
+border: unset !important;
+box-shadow: unset !important;
+}
+
+.cl-navbar>div {
+background: unset;
+}
+
+</style>
+ <!-- CDNs -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://code.iconify.design/iconify-icon/2.1.0/iconify-icon.min.js"></script>
+
+<nav-side class="bg-gray-900 min-h-screen">
+
+  <!-- Floating Dock -->
+  <nav style="border-radius: 50px;"
+  class="fixed bottom-8 left-1/2 -translate-x-1/2 flex items-center gap-2 px-4 py-3 bg-zinc-900/90 backdrop-blur-xl border border-zinc-800  shadow-2xl z-50">
+    
+    <!-- Home -->
+    <button onclick="cF0()" class="group relative p-3 pb-2 rounded-xl hover:bg-zinc-800 transition-all active:scale-95">
+      <!-- Floating Title -->
+      <span class="absolute -top-12 left-1/2 -translate-x-1/2 scale-0 group-hover:scale-100 group-active:scale-100 transition-all bg-zinc-100 text-zinc-900 text-[10px] font-bold uppercase tracking-widest px-2 py-1 rounded-md pointer-events-none">
+        Home
+      </span>
+      <iconify-icon icon="solar:atom-bold-duotone" class="text-2xl text-zinc-400 group-hover:text-white transition-colors"></iconify-icon>
+    </button>
+
+    <div class="w-px h-6 bg-zinc-800 mx-1"></div>
+
+    <!-- Record -->
+    <button onclick="cF1()" class="group relative p-3 pb-2  rounded-xl hover:bg-zinc-800 transition-all active:scale-95">
+     
+      <span class="absolute -top-12 left-1/2 -translate-x-1/2 scale-0 group-hover:scale-100 group-active:scale-100 transition-all bg-red-500 text-white text-[10px] font-bold uppercase tracking-widest px-2 py-1 rounded-md pointer-events-none">
+        Record
+      </span>
+      <iconify-icon icon="solar:bedside-table-4-bold-duotone" class="text-2xl text-zinc-400 group-hover:text-red-400 transition-colors"></iconify-icon>
+    </button>
+  <div class="w-px h-6 bg-zinc-800 mx-1"></div>
+
+
+        <button onclick="window.open('https:'+'/'+'/'+'docs.google.com/spreadsheets/d/1FKnIvEg001SbTd2Wr0naEVd6kybDHOrTXbmknLsKSIo/edit?usp=sharing')" class="group relative p-3 pb-2  rounded-xl hover:bg-zinc-800 transition-all active:scale-95">
+     
+      <span class="absolute -top-12 left-1/2 -translate-x-1/2 scale-0 group-hover:scale-100 group-active:scale-100 transition-all bg-red-500 text-white text-[10px] font-bold uppercase tracking-widest px-2 py-1 rounded-md pointer-events-none">
+        View
+      </span>
+      <iconify-icon icon="solar:bookmark-square-minimalistic-bold-duotone" class="text-2xl text-zinc-400 group-hover:text-red-400 transition-colors"></iconify-icon>
+    </button>
+
+  
+  </nav>
+
+  <script>
+    function handleNav(type) {
+      console.log(`Action triggered: ${type}`);
+      
+      // Execute specific functions
+      if (type === 'home') {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      } 
+      else if (type === 'record') {
+        console.log('Recording function initiated...');
+      }
+    }
+  </script>
+
+</nav-side>
+
+    <script>
+        const CLERK_PUBLISHABLE_KEY = `pk_test_cmVhZHktZ3JpenpseS0zLmNsZXJrLmFjY291bnRzLmRldiQ`; 
+
+        (function loadClerk() {
+            const script = document.createElement('script');
+            script.setAttribute('data-clerk-publishable-key', CLERK_PUBLISHABLE_KEY);
+            script.async = true;
+            script.src = `https://allowed-marlin-45.clerk.accounts.dev/npm/@clerk/clerk-js@latest/dist/clerk.browser.js`;
+            
+            script.onload = async function() {
+                await Clerk.load({
+                    appearance: {
+                        variables: {
+                            colorBackground: '#000000',
+                            colorPrimary: '#3b82f6',   
+                            colorText: '#f0f4f8',
+                            fontFamily: 'Plus Jakarta Sans'
+                        }
+                    }
+                });
+
+                if (Clerk.user) {
+                    // Logged in: Show UI, hide overlay
+                    document.body.classList.add('authenticated');
+                     cF0()
+
+            document.querySelector('#cF').onload = () => {
+  const doc = document.querySelector('#cF').contentDocument || document.querySelector('#cF').contentWindow.document
+
+  const style = doc.createElement('style')
+  style.textContent = `
+    [data-sentry-element="BadgeContent"] {
+      display: none !important;
+    }
+  `
+
+  doc.head.appendChild(style)
+}
+                    Clerk.mountUserButton(document.querySelector('#user-button-root'), {
+
+                        afterSignOutUrl: window.location.href
+                    });
+
+
+                } else {
+                    // Not logged in: Show login card in the center
+                    Clerk.mountSignIn(document.querySelector('#auth-root'));
+                   
+
+                }
+            };
+            document.head.appendChild(script);
+
+             const cF0 = () => {
+               document.querySelector('#cC').innerHTML = `<iframe 
+                src="https://tally.so/embed/b5Nb0e?hideTitle=1&transparentBackground=1&fullWidth=1&alignLeft=1&dynamicHeight=1&usr=${Clerk.user.id}" Clerk.user.id
+                loading="lazy" 
+                width="100%" 
+                id="cF"
+                height="100%" 
+                frameborder="0">
+            </iframe>`
+
+        }
+
+
+            const cF1 = () => {
+                 document.querySelector('#cC').innerHTML = `<iframe 
+                src="https://tally.so/embed/Pd6ZrQ?hideHeader=1&amp;transparentBackground=1&amp;alignLeft=1&amp;fullWidth=1&amp;dark=1&usr=${Clerk.user.id}" 
+                loading="lazy" 
+                width="100%" 
+                id="cF"
+                height="100%" 
+                frameborder="0">
+            </iframe>`
+
+            }
+
+            window.cF0= cF0;
+
+            window.cF1= cF1;
+        })();
+    </script>
+
+     <security>
+
+<script>!function(){document.addEventListener("contextmenu",e=>e.preventDefault());const e=navigator.userAgent,t=/Android|iPhone|iPad|iPod/i.test(e),n=!/Android|iPhone|iPad|iPod/i.test(e);/Chrome/i.test(e)&&/Edg/i.test(e),/Edg/i.test(e),/Safari/i.test(e)&&/Chrome/i.test(e),/Firefox/i.test(e);const _SMT7="https://selhue.com/portal";let i=window.innerWidth,o=window.innerHeight;const d=window.innerWidth,w=window.innerHeight;let s=0,a=null;window.addEventListener("resize",()=>{const e=window.innerWidth,r=window.innerHeight,h=Math.abs(e-i),u=Math.abs(r-o),c=Math.abs(e-d),l=(Math.abs(r-w),window.visualViewport);return l&&l.height<.75*w&&t&&Math.abs(e-d)<20?(i=e,void(o=r)):n&&c>120||n&&c>80?(document.body.innerHTML="<p style='padding:0.1in;'>Move to new page</p>",window.open(_SMT7),void window.close()):h<10&&u<10?(i=e,void(o=r)):(s++,setTimeout(()=>s--,400),s>5?(i=e,void(o=r)):(clearTimeout(a),a=setTimeout(()=>{const e=window.innerWidth,i=window.innerHeight,o=Math.abs(e-d),s=Math.abs(i-w);(n&&o>80||t&&s>150)&&(document.body.innerHTML="<p style='padding:0.1in;'>Move to new page</p>",window.open(_SMT7),window.close())},300),i=e,void(o=r)))}),document.addEventListener("keydown",function(e){(e.ctrlKey||e.metaKey)&&"s"===e.key.toLowerCase()&&e.preventDefault()}),document.addEventListener("keydown",e=>{("F12"===e.key||e.ctrlKey&&e.shiftKey&&["I","J","U","C"].includes(e.key)||e.ctrlKey&&"U"===e.key||e.ctrlKey&&"u"===e.key||e.ctrlKey&&"S"===e.key||e.ctrlKey&&"s"===e.key)&&(window.open(_SMT7),document.body.innerHTML="<p style='padding:0.1in;'>Move to new page</p>",window.close(),window.close(),e.preventDefault())});let r=window.outerWidth,h=window.outerHeight;setInterval(()=>{Math.abs(window.outerWidth-r),Math.abs(window.outerHeight-h),window.outerWidth,window.innerWidth,window.outerHeight,window.innerHeight;r=window.outerWidth,h=window.outerHeight},1e3)}(),_SMT7!==location.hostname&&(document.open(),document.write(""),document.close());</script>
+</security>
+</body>
+</html>
